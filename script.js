@@ -6,17 +6,21 @@ function getComputerChoice() {
     else { return 'scissors'; }
 }
 
+//function to run a single round of game 
+
 function playRound() {
 
     let userChoice = prompt('Enter your choice'); //Taking user input
     userChoice = userChoice.toLowerCase();
     let compChoice = getComputerChoice();   //Generatiing computer choice using getComputerChoice function 
 
-    if (userChoice.toLowerCase() === compChoice) //checking if both choices are not same
+    if (userChoice.toLowerCase() === compChoice) //checking for a tie
         return "Tie";
 
     else {
         switch (userChoice) {
+             
+            //condition to compare user choices with computer choices to decide winner
 
             case 'stone':
                 if (compChoice === 'scissors')
@@ -45,9 +49,12 @@ function playRound() {
 
 
 function game() {
+
     let count = 0; //counter variable to count total attempts
     let compScore = 0;   //score of computer
     let userScore = 0;   //score of user
+
+    //loop to run game attempt 5 times
 
     while (count < 5) {
         let attempt = playRound();
@@ -66,6 +73,8 @@ function game() {
 
         count++;
     }
+
+    //comparing scores to decide winner
 
     console.log(`Your score ${userScore}`);
     console.log(`Comp Score ${compScore}`)
