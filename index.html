@@ -1,19 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Stone Paper Scissor</title>
-  
-</head>
-<body>
-    <h1>Kindly Open the console to play the game</h1>
 
-        <button id="stone" value="stone">STONE</button>
-        <button id="paper" value="paper">PAPER</button>
-        <button id="scissors" value="scissors">SCISSORS</button>
-   
+</head>
+
+<body>
+
+
+    <head>
+        <h1>STONE PAPER SCISSORS !!!!!</h1>
+        <h3>Select your first choice to begin the game</h3>
+    </head>
+
+    <main>
+
+        <div class="firstContainer">
+            <div class="scoreBoard">
+                <p id="playerHeading"></p>
+                <span id="playerDisplay"></span>
+            </div>
+            <div class="container">
+                <button id="stone" value="stone">STONE</button>
+                <button id="paper" value="paper">PAPER</button>
+                <button id="scissors" value="scissors">SCISSORS</button>
+            </div>
+            <div id="computerScore">
+                <p id="compHeading"></p>
+                <span id="compDisplay"></span>
+            </div>
+        </div>
+
+        <div class="secondContainer">
+            <div class="scoreBoard">
+            </div>
+            <button id="reset">RESET GAME</button>
+        </div>
+
+    </main>
+
+
     <script src="script.js"></script>
 </body>
+
 </html>
