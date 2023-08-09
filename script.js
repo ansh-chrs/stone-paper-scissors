@@ -3,6 +3,10 @@ const yourScore = document.querySelector('#playerDisplay');
 const computerScore = document.querySelector('#compDisplay');
 const playerHead =document.querySelector('#playerHeading');
 const compHead =document.querySelector('#compHeading');
+const resultDisplay = document.querySelector('#result');
+const roundDisplay = document.querySelector('#round');
+
+
 buttons.forEach((btn) => btn.addEventListener('click', game));
 
 let count = 0; //counter variable to count total attempts
@@ -30,6 +34,9 @@ function game(e) {
     compHead.innerText = "COMPUTER SCORE";
     yourScore.innerText = userScore;
     computerScore.innerText = compScore;
+     roundDisplay.innerText = `Round : ${count}`;
+     resultDisplay.innerText = attempt;
+
 
     if (count === 5) {
         if (userScore > compScore)
@@ -59,7 +66,7 @@ function getComputerChoice() {
 
 function playRound(playerSelection) {
     let userChoice = playerSelection;
-    let compChoice = getComputerChoice();   //Generatiing computer choice using getComputerChoice function 
+    let compChoice = getComputerChoice();   
     if (userChoice === compChoice)
         return `Tie`;
     else {
