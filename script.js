@@ -1,10 +1,13 @@
 const buttons = document.querySelectorAll('button');
 const yourScore = document.querySelector('#playerDisplay');
 const computerScore = document.querySelector('#compDisplay');
-const playerHead =document.querySelector('#playerHeading');
-const compHead =document.querySelector('#compHeading');
+const playerHead = document.querySelector('#playerHeading');
+const compHead = document.querySelector('#compHeading');
 const resultDisplay = document.querySelector('#result');
 const roundDisplay = document.querySelector('#round');
+const matchResult = document.querySelector('#matchResult');
+const resetBtn = document.querySelector('#reset');
+// const playBtn = document.querySelector('#play');
 
 
 buttons.forEach((btn) => btn.addEventListener('click', game));
@@ -15,42 +18,58 @@ let userScore = 0;   //score of user
 
 
 function game(e) {
-    let attempt = playRound(e.target.value);
-    ++count;
-    console.log(`round ${count}`);
-    //    console.log(attempt);
-    if (attempt.includes('Win'))
-        userScore++;
 
-    else if (attempt.includes('Loss'))
-        compScore++;
-    else {
-        userScore++;
-        compScore++;
-    }
+        let attempt = playRound(e.target.value);
+        ++count;
 
+        if (attempt.includes('Win'))
+            userScore++;
 
-    playerHead.innerText = "YOUR SCORE";
-    compHead.innerText = "COMPUTER SCORE";
-    yourScore.innerText = userScore;
-    computerScore.innerText = compScore;
-     roundDisplay.innerText = `Round : ${count}`;
-     resultDisplay.innerText = attempt;
+        else if (attempt.includes('Loss'))
+            compScore++;
+        else {
+            userScore++;
+            compScore++;
+        }
 
+        playerHead.innerText = "YOUR SCORE";
+        compHead.innerText = "COMPUTER SCORE";
+        yourScore.innerText = userScore;
+        computerScore.innerText = compScore;
+        roundDisplay.innerText = `Round : ${count}`;
+        resultDisplay.innerText = attempt;
 
-    if (count === 5) {
-        if (userScore > compScore)
-            console.log('You win!!');
-        else if (compScore > userScore)
-            console.log('Comp wins');
-        else console.log('Tie');
-
-        count = 0;
-        compScore = 0;
-        userScore = 0;
-    }
+        if (count === 5) {
+            let finalResult;
+            if (userScore > compScore)
+                finalResult = 'You win!!';
+            else if (compScore > userScore)
+                finalResult = 'Comp wins!!';
+            else finalResult = 'Tie';
+            matchResult.innerText = finalResult;
+            count = 0;
+            compScore = 0;
+            userScore = 0;
+        } 
 }
 
+
+resetBtn.addEventListener('click', reset);
+function reset() {
+compScore = 0;   //scor
+userScore = 0;   //score of user
+gameState = 0;
+gameState = 0;
+    count = 0;
+
+    playerHead.innerText = "";
+    compHead.innerText = "";
+    yourScore.innerText = '';
+    computerScore.innerText = '';
+    roundDisplay.innerText = ``;
+    resultDisplay.innerText = '';
+    matchResult.innerText = '';
+}
 
 // function to generate computer value
 
@@ -66,7 +85,7 @@ function getComputerChoice() {
 
 function playRound(playerSelection) {
     let userChoice = playerSelection;
-    let compChoice = getComputerChoice();   
+    let compChoice = getComputerChoice();
     if (userChoice === compChoice)
         return `Tie`;
     else {
