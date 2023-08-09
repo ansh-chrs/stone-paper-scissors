@@ -9,7 +9,7 @@ const matchResult = document.querySelector('#matchResult');
 const resetBtn = document.querySelector('#reset');
 // const playBtn = document.querySelector('#play');
 
-
+resetBtn.style.display ='none';
 buttons.forEach((btn) => btn.addEventListener('click', game));
 
 let count = 0; //counter variable to count total attempts
@@ -18,7 +18,9 @@ let userScore = 0;   //score of user
 
 
 function game(e) {
+              if(count <5){
 
+                resetBtn.style.display ='inline-block';       
         let attempt = playRound(e.target.value);
         ++count;
 
@@ -47,10 +49,14 @@ function game(e) {
                 finalResult = 'Comp wins!!';
             else finalResult = 'Tie';
             matchResult.innerText = finalResult;
-            count = 0;
+            // count = 0;
             compScore = 0;
             userScore = 0;
+            resetBtn.innerText = "Play Again ?";
+            return;
         } 
+
+    }
 }
 
 
@@ -61,7 +67,8 @@ userScore = 0;   //score of user
 gameState = 0;
 gameState = 0;
     count = 0;
-
+    resetBtn.innerText = "Reset Game";
+    resetBtn.style.display ='none';
     playerHead.innerText = "";
     compHead.innerText = "";
     yourScore.innerText = '';
